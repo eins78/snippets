@@ -1,9 +1,10 @@
-// let's define a test object,
+// 
+// - a test object
 var testobject = {
   'id': "12345",
 	'date': new Date()
 },
-// and a slightly more evil, nested object.
+// - slightly more evil, nested object.
 nestedTestobject = {
   'id': "12345",
 	'date': new Date(),
@@ -14,12 +15,10 @@ nestedTestobject = {
       'date': (new Date(Math.random() * 10000000000))
     }
   }
-},
-// Also, a placeholder for our function.
-JSON_goodify;
+};
 
 // `JSON_goodify` takes object and return it 'cleaned'.
-exports = JSON_goodify = function (data) {
+var JSON_goodify = function (data) {
   // the work is done in the `packObject` function, 
   // which takes an object and returns a new object 
   function packObject(obj) {
@@ -40,11 +39,11 @@ exports = JSON_goodify = function (data) {
           // we can just use it
           good[prop] = o[prop];
           
-        // so it has some kind of object.
-        // if it is, we check for types of objects we now how to sanitize.
+        // Otherwise, we have some kind of object.
+        // If it is, we check for types of objects we now how to sanitize.
         } else if (typeof o[prop] === "object") {
 
-          // if it is a date, TODO: better
+          // if it is a date,                   // TODO: better
           if (o[prop].getTime !== undefined) {
             
             // we get the unix time from the date object and put that into a string
@@ -66,6 +65,9 @@ exports = JSON_goodify = function (data) {
   return packObject(data);
 }
 
-// test it
+// Lastly, we export it so we can use it as a `node_module`.
+exports = JSON_goodify
+
+// Now test it!
 console.log(JSON_goodify(testobject));
 console.log(JSON_goodify(nestedTestobject));
