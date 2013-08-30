@@ -1,0 +1,46 @@
+// change ".foo" to ".foo, .bar"
+
+// Sample A
+.foo {
+  color: red;
+  p & {
+    width: 1em;
+  }
+}
+
+// lazy extend
+.bar:extend(.foo) {
+}
+p .bar:extend(p .foo) {
+}
+
+// Sample B
+.loo {
+  color: green;
+  b & {
+    width: 1em;
+  }
+}
+.baz {
+  // note the 'all' pseudo-element!
+  &:extend(.loo all);
+}
+
+// Outputs:
+
+.foo,
+.bar {
+  color: red;
+}
+p .foo,
+p .bar {
+  width: 1em;
+}
+.loo,
+.baz {
+  color: green;
+}
+b .loo,
+b .baz {
+  width: 1em;
+}
