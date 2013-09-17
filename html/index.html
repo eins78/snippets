@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>HTML5 website</title>
+  
+  <!-- make Mobile Safari play nice -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- make IE 8 play nice -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- fonts from google -->
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  
+  <style type="text/css">
+  	body {
+    	font-family: "Helvetica", sans-serif;
+    	font-size: 2em;
+  	}
+    // data stuff
+    body[data-property="diy-data-here"] {
+      background-color: red;
+    }
+    // responsive stuff
+  	@media screen and (min-width: 24em){
+      body {
+      	font-size: 3em;
+      }
+}
+  </style>
+  <script>
+    // when the DOM is ready, do something
+    window.addEventListener('DOMContentLoaded', function(){
+      console.log("DOM ready!");
+    });
+  </script>
+</head>
+
+  <body data-property="diy-data-here">
+    <header>
+      <h1><a href="#">Hello World</a></h1>
+    </header>
+    <footer>
+      <a href="http://example.com">contact</a>
+    </footer>
+  </body>
+
+</html>
